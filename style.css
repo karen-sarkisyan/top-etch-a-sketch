@@ -1,0 +1,11 @@
+.gridcontainer {
+    width: 480px;
+    height: 480px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-color: black;
+}
+
+.controls {
+    text-align: center;
+}
