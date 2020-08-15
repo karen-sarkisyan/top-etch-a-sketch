@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Etch-a-sketch by Karen</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <main>
+      <h1>Etch-a-Sketch</h1>
+      <p>Hover a cursor to draw.</p>
+      <p>To rebuild, enter the number of rows from 16 to 96.</br>We may change the number to make it neat.</p>
       <div class="controls">
-        <button type="button" id="reset">Reset</button>
         <input id="inputBox" value="16">
+        <button type="button" id="reset">Clear & Build</button>
+        <div class="input_error"><span id="error_message"></span></div>
       </div>
       <div class="gridcontainer">
-
+        <!-- Grid goes here-->
       </div>
 
     </main>

@@ -3,6 +3,7 @@
 const container = document.querySelector('.gridcontainer');
 const inputBox = document.querySelector('#inputBox');
 const buttonReset = document.querySelector('#reset');
+const errorMessage = document.querySelector('#error_message');
 
 let gridSide = parseInt(inputBox.value); 
 let canvasSize = 480;
@@ -41,14 +42,17 @@ makeListeners();
 // Should be an integer within 16-96 range
 
 inputBox.addEventListener('input', function () {
+
     let numberTyped = parseInt(inputBox.value);
-    if (!Number.isInteger(numberTyped) || numberTyped < 16 || numberTyped > 96) {
+    if (isNaN(inputBox.value) || !Number.isInteger(numberTyped) || numberTyped < 16 || numberTyped > 96) {
         inputBox.classList.add('input_invalid');
         isValid = false;
+        errorMessage.textContent = "Invalid input";
     }
     else {
         inputBox.classList.remove('input_invalid');
         isValid = true;
+        errorMessage.textContent = "";
     };
 });
 

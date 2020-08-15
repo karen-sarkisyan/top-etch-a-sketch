@@ -1,16 +1,45 @@
+body {
+    background-color: whitesmoke;
+}
+
+h1, p {
+    text-align: center;
+}
+
 .gridcontainer {
+    background-color: white;
     width: 480px;
     height: 480px;
     margin: 0 auto;
     border: 1px solid;
     border-color: black;
+    
 }
 
 .controls {
     text-align: center;
 }
 
-.input_invalid {
+#inputBox {
+    outline: none;
     border: 1px solid;
-    border-color: red;
+    border-color: grey;
+    border-radius: 3px;
+    font-size: 19px;
+    text-align: center;
+    width: 100px;
+}
+
+#reset {
+    font-size: 16px;
+}
+
+.input_invalid {
+    border-bottom-color: red;
+}
+
+.input_error {
+    color: red;
+    height: 30px;
+    text-align: center;
 }
