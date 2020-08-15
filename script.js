@@ -6,29 +6,9 @@ const buttonReset = document.querySelector('#reset');
 
 let gridSide = parseInt(inputBox.value); 
 let canvasSize = 480;
+let isValid = true;
 
-// Initiating grid
-
-buildGrid(container, canvasSize, gridSide);
-
-// Validating the input value
-
-inputBox.addEventListener('input', function () {
-    let numberTyped = parseInt(inputBox.value);
-    if (!Number.isInteger(numberTyped) || numberTyped < 16 || numberTyped > 96) {
-        inputBox.style.background = 'red';
-    };
-});
-
-function validateGridSide(inputSize, canvasSizes) {
-
-    while (canvasSizes % inputSize > 0) {
-
-        inputSize++;
-    };
-
-
-}
+// Initiating grid from the start
 
 function buildGrid (canvas, heightOfCanvas, numberRows) {
     let squareSide = heightOfCanvas/numberRows;
@@ -37,10 +17,12 @@ function buildGrid (canvas, heightOfCanvas, numberRows) {
         div.setAttribute('style', `float:left; background-color: black; opacity: 0; width: ${squareSide}px; height: ${squareSide}px;`);
         div.classList.add('gridSquare');
         canvas.appendChild(div);
-    }
-}
+    };
+};
 
+// Adding listeners
 
+buildGrid(container, canvasSize, gridSide);
 
 function makeListeners() {
     const listOfSquares = document.querySelectorAll('.gridSquare')
@@ -54,10 +36,50 @@ function makeListeners() {
 
 makeListeners();
 
-function clearCanvas(canvas) {
-    let listOfChildren = canvas.childNodes;
-    listOfSquares.forEach((child) => {
-        canvas.removeChild(child);
 
-    });
+// Input by user: validating the number of grid rows and columns
+// Should be an integer within 16-96 range
+
+inputBox.addEventListener('input', function () {
+    let numberTyped = parseInt(inputBox.value);
+    if (!Number.isInteger(numberTyped) || numberTyped < 16 || numberTyped > 96) {
+        inputBox.classList.add('input_invalid');
+        isValid = false;
+    }
+    else {
+        inputBox.classList.remove('input_invalid');
+        isValid = true;
+    };
+});
+
+// Finding 480 divisor with zero remainder
+
+function findDivisor(canvasSideSize, divisor) {
+    // divisor already validated
+    while (canvasSideSize % divisor > 0) {
+        divisor++;
+    };
+    return divisor
+};
+
+// Clearing canvas by completely removing divs
+
+function clearCanvas(canvas) {
+    while (canvas.hasChildNodes()) {
+        canvas.removeChild(canvas.firstChild);
+    }
 }
+
+// On Reset btn click, read input value, clear canvas and build new grid with listeners
+
+buttonReset.addEventListener('click', () => {
+    if (isValid) {
+        gridSide = inputBox.value;
+        clearCanvas(container);
+        gridSide = findDivisor(canvasSize, gridSide);
+        inputBox.value = gridSide;
+        buildGrid(container, canvasSize, gridSide);
+        makeListeners();
+    };
+    
+});

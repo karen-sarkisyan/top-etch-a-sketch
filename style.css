@@ -9,3 +9,8 @@
 .controls {
     text-align: center;
 }
+
+.input_invalid {
+    border: 1px solid;
+    border-color: red;
+}
