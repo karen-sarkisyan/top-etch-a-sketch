@@ -34,10 +34,6 @@ h1, p {
     font-size: 16px;
 }
 
-.input_invalid {
-    border-bottom-color: red;
-}
-
 .input_error {
     color: red;
     height: 30px;

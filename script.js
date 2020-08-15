@@ -45,12 +45,13 @@ inputBox.addEventListener('input', function () {
 
     let numberTyped = parseInt(inputBox.value);
     if (isNaN(inputBox.value) || !Number.isInteger(numberTyped) || numberTyped < 16 || numberTyped > 96) {
-        inputBox.classList.add('input_invalid');
+        //inputBox.classList.add('input_invalid');
+        inputBox.style.borderBottomColor = "red";
         isValid = false;
         errorMessage.textContent = "Invalid input";
     }
     else {
-        inputBox.classList.remove('input_invalid');
+        inputBox.style.borderBottomColor = "grey";
         isValid = true;
         errorMessage.textContent = "";
     };
