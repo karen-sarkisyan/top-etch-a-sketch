@@ -1,5 +1,7 @@
-# top-etch-a-sketch
+# Etch-a-Sketch by Karen
 
-A project, suggested by The Odin Project, to train some skills of manipulating DOM with JavaScript.
+A project, suggested by The Odin Project, to train DOM manupulation.
 
-It's a nice etch-a-sketch board.
+Working version with minimal design.
+
+[Try it here](https://karen-sarkisyan.github.io/top-etch-a-sketch/)
